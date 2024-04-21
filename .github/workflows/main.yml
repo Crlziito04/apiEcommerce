@@ -29,7 +29,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{secrets.DOCKERHUB_USERNAME}}/apiEcommerce:latest
-        
+       -
+        name: Login to GitHub Packages
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GITHUB_USER }} --password-stdin
+       -
+        name: Build and Push to GitHub Packages
+        run: |
+          docker build -t docker.pkg.github.com/${{ secrets.GITHUB_USER }}/apiEcommerce:latest .
+          docker push docker.pkg.github.com/${{ secrets.GITHUB_USER }}/apiEcommerce:latest
 
           
 
