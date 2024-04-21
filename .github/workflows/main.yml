@@ -23,8 +23,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
         
       - 
-        name: Build and Push
-        uses: docker/build-push-action@v5
+        name: Build and Push to Docker Hub
+        uses: docker/build-push-action@v2
         with:
           context: ./ecommerce-crlziito04
           file: Dockerfile
