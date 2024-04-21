@@ -26,8 +26,8 @@ jobs:
         name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./ecommerce-crlziito04
-          file: Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/api-ecommerce:latest
        
