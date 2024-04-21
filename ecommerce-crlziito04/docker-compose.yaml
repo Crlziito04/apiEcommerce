@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env.development
+    depends_on:
+      - database
+
+  database:
+    container_name: database_postgres
+    image: 'postgres'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env.development
+
+volumes:
+  pgdata:
